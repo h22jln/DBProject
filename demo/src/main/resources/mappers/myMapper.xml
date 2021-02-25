@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+
+<mapper namespace="myproject">
+	<select id="selectName" resultType="map" parameterType="String">
+		select c.subname, i.professor, i.dept, i.grade,i.book 
+		from sub_code c, sub_info i
+		where c.subcode = i.subcode and subname LIKE CONCAT('%',#{subject},'%')
+	</select>
+	
+	<select id="selectCount" resultType="int" parameterType="String">
+		select count(*)
+		from sub_code c, sub_info i
+		where c.subcode = i.subcode and subname LIKE CONCAT('%',#{subject},'%')
+	</select>
+	
+	
+</mapper>
